@@ -14,48 +14,48 @@ resource "aws_instance" "ec2" {
   vpc_security_group_ids = var.security_group
   iam_instance_profile   = var.instance_profile
   tags                   = var.tags
+  subnet_id              = var.ec2_subnet
 }
 
-resource "aws_elb" "elb" {
-  name               = "foobar-terraform-elb"
-  availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
+resource "aws_lb_target_group" "tg" {
+  name     = "${var.app_name}-tg"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = var.vpc_id
+}
 
-  access_logs {
-    bucket        = "foo"
-    bucket_prefix = "bar"
-    interval      = 60
+resource "aws_lb_target_group_attachment" "tga" {
+  target_group_arn = aws_lb_target_group.tg.arn
+  target_id        = aws_instance.ec2.id
+  port             = 80
+}
+
+resource "aws_lb" "alb" {
+  name                       = "${var.app_name}-alb"
+  internal                   = false
+  load_balancer_type         = "application"
+  security_groups            = var.security_group
+  subnets                    = var.subnets
+  enable_deletion_protection = false
+  tags                       = var.tags
+}
+resource "aws_lb_listener" "listener" {
+  load_balancer_arn = aws_lb.alb.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  certificate_arn   = var.ssl_cert_arn
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.tg.arn
   }
+}
 
-  listener {
-    instance_port     = 8000
-    instance_protocol = "http"
-    lb_port           = 80
-    lb_protocol       = "http"
-  }
-
-  listener {
-    instance_port      = 8000
-    instance_protocol  = "http"
-    lb_port            = 443
-    lb_protocol        = "https"
-    ssl_certificate_id = "arn:aws:iam::123456789012:server-certificate/certName"
-  }
-
-  health_check {
-    healthy_threshold   = 2
-    unhealthy_threshold = 2
-    timeout             = 3
-    target              = "HTTP:8000/"
-    interval            = 30
-  }
-
-  instances                   = [aws_instance.foo.id]
-  cross_zone_load_balancing   = true
-  idle_timeout                = 400
-  connection_draining         = true
-  connection_draining_timeout = 400
-
-  tags = {
-    Name = "foobar-terraform-elb"
-  }
+resource "aws_route53_record" "record" {
+  zone_id = var.zone_id
+  name    = var.dns
+  type    = "CNAME"
+  ttl     = "60"
+  records = [aws_lb.alb.dns_name]
 }

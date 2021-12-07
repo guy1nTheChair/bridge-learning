@@ -182,4 +182,5 @@ cython_debug/
 .env
 
 *.terraform*
-/*/*/*.pem
+*.pem
+.DS_Store
