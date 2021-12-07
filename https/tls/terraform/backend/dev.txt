@@ -1,0 +1,4 @@
+bucket = "ap-south-1-santosh-bridge"
+key = "learn/https/tls/terraform.state"
+encrypt = true
+region = "ap-south-1"
