@@ -19,9 +19,9 @@ def home():
     }, 200
 
 
-@app.route("/api")
-def api():
-    return requests.get(ROOT_DOMAIN).json(), 200
+# @app.route("/api")
+# def api():
+#     return requests.get(ROOT_DOMAIN).json(), 200
 
 
 @app.route("/health")

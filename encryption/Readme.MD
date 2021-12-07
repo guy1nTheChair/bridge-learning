@@ -1,8 +1,6 @@
-**Table Of Contents**
-
 ## Encryption
 
-Encryption refers to the process of Encoding information. This process converts plaintext information into encrypted format known as Ciphertext. Ideally, only authorized parties can decipher a ciphertext back to plaintext and access the original information.
+Encryption refers to the process of encoding information. This process converts plaintext information into encrypted format known as Ciphertext. Ideally, only authorized parties can decipher a ciphertext back to plaintext and access the original information.
 
 **Cryptography** is the means by which security for information and resources is enforced using various encryption methods and strategies.
 
