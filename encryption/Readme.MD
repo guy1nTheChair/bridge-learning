@@ -1,4 +1,4 @@
-## Encryption
+## Bridge-Learning: Encryption
 
 Encryption refers to the process of encoding information. This process converts plaintext information into encrypted format known as Ciphertext. Ideally, only authorized parties can decipher a ciphertext back to plaintext and access the original information.
 
