@@ -39,6 +39,8 @@ Transportation Layer Security (TLS).
 }
 * Connection #0 to host dev.firstmistake.co.in left intact
  ```
+ <img src="assets/http.png" width="384" height="256">
+
  4. Making request with https
  ```
  ➜  ~ curl -v https://dev.firstmistake.co.in
@@ -89,3 +91,4 @@ Transportation Layer Security (TLS).
 }
 * Connection #0 to host dev.firstmistake.co.in left intact
  ```
+<img src="assets/https.png" width="384" height="256">
