@@ -1,6 +1,6 @@
 region           = "ap-south-1"
 instance_count   = 1
-dns              = "dev.first-mistake.co.in"
+dns              = "dev.firstmistake.co.in"
 zone_id          = "Z03909793FNMW9NDC1F8J"
 app_name         = "bridge-learn"
 key_pair         = "mac"
