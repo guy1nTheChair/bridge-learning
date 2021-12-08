@@ -1,22 +1,25 @@
 # Bridge-Learning: HTTPS - TLS
 
 # TLS 
-Transportation Layer Security (TLS).
+Transport Layer Security (TLS), the successor of the now-deprecated Secure Sockets Layer (SSL), is a cryptographic protocol designed to provide communications security over a computer network. The protocol is widely used in applications such as email, instant messaging, and voice over IP, but its use in securing HTTPS remains the most publicly visible.
 
-## Note:
-1. Purchased Domain firstmistake.co.in on godaddy
-2. Created hosted zone for firstmistake.co.in on AWS
-3. Copied nameservers of above hosted zone into godaddy domain settings
-4. Created SSL Cert on AWS ACM, with ```subject: firstmistake.co.in``` as root domain and ```subjectAltName: *.firstmistake.co.in``` for subsequent subdomains
+In Layman terms,
+1. When one tries to access a website via browser or makes a REST API call, with http protocol alone, the data being exchanged, is in plaintext form and any third party could easily interecpt this request and misuse the information or lead to data breach or security issues etc.,
 
+2. To solve this problem, we have SSL/TLS that are wrappers around http. Here too, the data is being exchanged but it is encrypted. This means, if there's a third party snooping around, even if they get hold of the entire request, they wouldn't be able to read the information as it is in encrypted format.
 
-## Observations:
+This makes for standard for exchanging information across the web securely.  
 
- 1. Created EC2, supplied user_data to install docker and run a docker container with host ports 80 and 443 forwarded to port 5000 of the container
- 2. Created an ALB, Target Group, attached the EC2 instance to TG, created 2 listeners,
-    1. port 80 listener forwarding to TG
-    2. port 443 listener with SSL cert forwarding to TG
- 3. Making request to API with http
+Here's what I tried:
+
+## Steps:
+
+ 1. Created:
+    1. EC2 with ```user_data``` to install docker and run a docker container with host ports 80 and 443 forwarded to port 5000 of the container
+    2. ALB, Target Group, attached the EC2 instance to TG, created 2 listeners,
+        1. port 80 listener forwarding to TG
+        2. port 443 listener with SSL cert forwarding to TG
+ 2. Making request to API with http
  ```
  ➜  ~ curl -v http://dev.firstmistake.co.in
 *   Trying 35.154.58.77:80...
@@ -41,7 +44,7 @@ Transportation Layer Security (TLS).
  ```
  <img src="assets/http.png" width="384" height="256">
 
- 4. Making request with https
+ 3. Making request with https
  ```
  ➜  ~ curl -v https://dev.firstmistake.co.in
 *   Trying 35.154.58.77:443...
@@ -92,3 +95,7 @@ Transportation Layer Security (TLS).
 * Connection #0 to host dev.firstmistake.co.in left intact
  ```
 <img src="assets/https.png" width="384" height="256">
+
+
+
+Source: obviously Wikipedia 🤣
