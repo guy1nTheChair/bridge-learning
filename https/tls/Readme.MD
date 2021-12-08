@@ -38,8 +38,6 @@ Transportation Layer Security (TLS).
   "Hello": "World!"
 }
 * Connection #0 to host dev.firstmistake.co.in left intact
-➜  ~ 
-
  ```
  4. Making request with https
  ```
