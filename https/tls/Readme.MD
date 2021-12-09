@@ -5,12 +5,14 @@ Transport Layer Security (TLS), the successor of the now-deprecated Secure Socke
 
 In Layman terms,
 1. When one tries to access a website via browser or makes a REST API call, with http protocol alone, the data being exchanged, is in plaintext form and any third party could easily interecpt this request and misuse the information or lead to data breach or security issues etc.,
-
 2. To solve this problem, we have SSL/TLS that are wrappers around http. Here too, the data is being exchanged but it is encrypted. This means, if there's a third party snooping around, even if they get hold of the entire request, they wouldn't be able to read the information as it is in encrypted format.
+3. In TLS, only the server's TLS Certificate is validated, and then the information is exchanged.
+4. In mTLS, both the server and client's certificates are validated, and then the information is exchanged.
 
 This makes for the current standard for exchanging information across the web securely.
 
-## Some technical info
+## Technicals
+
 1. The handshake begins when a client connects to a TLS-enabled server requesting a secure connection and the client presents a list of supported cipher suites (ciphers and hash functions).
 2. From this list, the server picks a cipher and hash function that it also supports and notifies the client of the decision.
 3. The server usually then provides identification in the form of a digital certificate. The certificate contains the server name, the trusted certificate authority (CA) that vouches for the authenticity of the certificate, and the server's public encryption key.
@@ -21,8 +23,7 @@ This makes for the current standard for exchanging information across the web se
 
 This concludes the handshake and begins the secured connection, which is encrypted and decrypted with the session key until the connection closes. If any one of the above steps fails, then the TLS handshake fails and the connection is not created.
 
-
-Here's what I tried:
+Source: obviously Wikipedia 😇
 
 ## Steps:
 
@@ -108,6 +109,6 @@ Here's what I tried:
  ```
 <img src="assets/https.png" width="384" height="256">
 
+## Observations:
+1. When request is sent with http only
 
-
-Source: obviously Wikipedia 🤣
