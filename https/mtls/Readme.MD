@@ -17,7 +17,7 @@ This allows for:
 
 ## Technicals
 
-In mTLS, however, both the client and server have a certificate, and both sides authenticate using their public/private key pair. Compared to regular TLS, there are additional steps in mTLS to verify both parties (additional steps in bold):
+In mTLS, both the client and server have a certificate, and both sides authenticate using their public/private key pair. Compared to regular TLS, there are additional steps in mTLS to verify both parties :
 
 1. Client connects to server
 2. Server presents its TLS certificate

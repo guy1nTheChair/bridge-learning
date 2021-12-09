@@ -110,5 +110,5 @@ Source: obviously Wikipedia 😇
 <img src="assets/https.png" width="384" height="256">
 
 ## Observations:
-1. When request is sent with http only
+1. When request is sent with http only, there's no exchange of keys
 
