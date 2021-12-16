@@ -26,3 +26,8 @@ In mTLS, both the client and server have a certificate, and both sides authentic
 5. Server verifies the client's certificate
 6. Server grants access
 7. Client and server exchange information over encrypted TLS connection
+
+Source: Cloudfare
+
+## Steps
+

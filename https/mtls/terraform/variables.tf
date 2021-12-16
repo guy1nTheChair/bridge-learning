@@ -1,0 +1,16 @@
+variable "region" {}
+variable "dns" {}
+variable "zone_id" {}
+variable "instance_count" {}
+variable "app_name" {}
+variable "key_pair" {}
+variable "ami_id" {}
+variable "instance_type" {}
+variable "security_group" {}
+variable "instance_profile" {}
+variable "tags" {}
+variable "api_port" {}
+variable "vpc_id" {}
+variable "subnets" {}
+variable "ssl_cert_arn" {}
+variable "ec2_subnet" {}

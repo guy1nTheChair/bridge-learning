@@ -108,7 +108,5 @@ Source: obviously Wikipedia 😇
 * Connection #0 to host dev.firstmistake.co.in left intact
  ```
 <img src="assets/https.png" width="384" height="256">
-
-## Observations:
-1. When request is sent with http only, there's no exchange of keys
+ 
 

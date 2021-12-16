@@ -59,6 +59,10 @@ Encryption refers to the process of encoding information. This process converts 
         - In 1998, a DES-encrypted message was cracked in three days.
         - In 1999, a network of 10,000 desktop computers managed to crack a DES-encrypted message in just 1 day.
     3. **Advanced Encryption Standard (AES):**
+        - Used to generate Symmetric keys
+        - Works by applying mathematical computations to each 128 bits of data
+        - Key size can be 128/192/256 bits
+        - A 128-bit key would take an attacker 100 trillion years to break
     4. **IDEA:** International Data Encryption Algorithm
         
         Block size - 64 bits and Key size - 128 bits
