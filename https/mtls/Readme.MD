@@ -34,7 +34,7 @@ Source: Cloudfare
 1. Create Root CA. This CA will never be used to sign client/server certificates as risks high when private keys of Root CA are compromised, it could lead to compromising all intermediary certifcates and can be used later to sign any other certificates.
 2. Create Intermediary CA to sign leaf (server/client) certificates
 3. Generate private keys of leaf cert, then create certificate signing request. Then use the intermediary CA to sign the leaf cert (server/client)
-4. Copy the contents of ca.crt of both inter and root to one single .crt file. import this file into browser as Authority.
+4. Copy the contents of ca.crt of both inter and root to one .crt file fullchain.crt .
 5. Setup nginx server for testing locally with some dummy HTML content
 6. Update nginx config /etc/nginx/sites-enabled/default with following attributes to enable mTLS
 ```      
@@ -100,7 +100,7 @@ Custom HTML Content by Santosh
 * Connection #0 to host mydomain.com left intact
 root@bigred:~/my-own-ca# 
 ```
-8. Removing ```--key``` and ```--cert``` from curl command. This implies, the user is not presenting our certificate to the server.
+8. Removing ```--key``` and ```--cert``` from curl command. This implies, the user is not presenting a valid certificate to prove their identity to the server.
 ```
 root@bigred:~/my-own-ca# curl --cacert certs/fullchain.crt https://mydomain.com -v
 *   Trying 127.0.0.1:443...
