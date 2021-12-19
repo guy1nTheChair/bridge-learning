@@ -32,3 +32,8 @@ PlainText is: Very sensitive information
 vscode ➜ /workspaces/setu-learning (main ✗) $ ls rsa_*pem
 rsa_private.pem  rsa_public.pem
 ```
+
+Sources:
+1. Stack Overflow
+2. Cryptography pypi
+3. Medium
